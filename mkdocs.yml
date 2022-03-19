@@ -185,13 +185,13 @@ nav:
   - Início: index.md
   - Sobre o Autor: about.md
   - Programação Orientada à Objetos:
-    - Sobre: oriented_object_programming/index.md
+    - oriented_object_programming/index.md
     - Introdução ao Design Orientado à Objetos: oriented_object_programming/introduction.md
     - Classes e Objetos em Python: oriented_object_programming/classes_and_objects_in_python.md
     - Herança, Composição & Polimorfismo: oriented_object_programming/inheritance_composition_and_polymorphism.md
     # - Estudos de Caso:  # TODO
-  - Masterizando o Python:
-    - Sobre: mastering_python/index.md
+  - Masterizando Python:
+    - mastering_python/index.md
     - Guias Definitivos:
       - Importações em Python: mastering_python/definitive_guides/python_imports_guide.md
     - Dicas e Truques: mastering_python/tips_and_tricks/index.md  # Temporary file
