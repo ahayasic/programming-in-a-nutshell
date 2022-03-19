@@ -1,15 +1,15 @@
 # Project Information
 #
-site_name: Python in a Nutshell
-site_url: https://ahayasic.github.io/python-in-a-nutshell
+site_name: Programming in a Nutshell
+site_url: https://ahayasic.github.io/programming-in-a-nutshell
 site_author: Alisson Hayasi da Costa
 # site_description:
 
 
 # Repository
 #
-repo_name: ahayasic/python-in-a-nutshell
-repo_url: https://github.com/ahayasic/python-in-a-nutshell
+repo_name: ahayasic/programming-in-a-nutshell
+repo_url: https://github.com/ahayasic/programming-in-a-nutshell
 edit_uri: ""
 
 
@@ -160,7 +160,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       repo_url_shorthand: true
       user: ahayasic
-      repo: apache-airflow-in-a-nutshell
+      repo: programming-in-a-nutshell
 
   # Utils
   - toc:
