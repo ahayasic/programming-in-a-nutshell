@@ -194,5 +194,8 @@ nav:
     - mastering_python/index.md
     - Guias Definitivos:
       - Importações em Python: mastering_python/definitive_guides/python_imports_guide.md
-    - Dicas e Truques: mastering_python/tips_and_tricks/index.md  # Temporary file
+  - Práticas de Desenvolvimento:
+    - development_practices/index.md
+    - Como documentar aplicações: development_practices/how_document_applications.md
+    - Linters para Python: development_practices/linting.md
   # - Referências: references.md
