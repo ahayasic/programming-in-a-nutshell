@@ -1,3 +1,14 @@
+:root {
+    --md-primary-fg-color:        #00796b;
+    --md-primary-fg-color--light: #00796b;
+    --md-primary-fg-color--dark:  #00796b;
+}
+
+.md-typeset code {
+    line-height: 1.5;
+}
+
+
 @media screen and (min-width: 768px){
     .md-grid {
         max-width: 75rem;

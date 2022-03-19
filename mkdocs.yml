@@ -47,23 +47,23 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: amber
-      accent: amber
+      # primary: amber
+      # accent: amber
       toggle:
         icon: material/toggle-switch-off-outline
         name: Trocar para Modo Escuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: amber
-      accent: amber
+      # primary: amber
+      # accent: amber
       toggle:
         icon: material/toggle-switch
         name: Trocar para Modo Claro
 
   # Font
   font:
-    text: Source Sans Pro
-    code: DM Mono
+    text: Nunito
+    code: Fira Mono
     font: false
   # favicon:
   icon:
@@ -76,7 +76,7 @@ plugins:
   - search
   - git-revision-date-localized:
       type: iso_date
-      fallback_to_build_date: false
+      fallback_to_build_date: true
       enable_creation_date: true
       exclude:
         - index.md
