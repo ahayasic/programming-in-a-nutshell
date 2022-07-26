@@ -142,6 +142,9 @@ Também é possível configurar o pyright via arquivo de configurações (e.g. `
 }
 ```
 
+!!! warning "Typing hints podem ser legais?"
+    Para um material prático sobre o uso de typing hints em Python, veja a seção [Typing Hints](../mastering_python/typing_hints.md)
+
 ### Linting durante testes
 
 A fim de garantir que toda adição ou alteração de código no projeto respeite as convenções de estilo e padrões de qualidade, podemos incluir a validação de linters como uma etapa de teste (que é executada durante um pipeline de CI/CD) ou mesmo antes de um commit ser feito (considerando que há o uso de Git).

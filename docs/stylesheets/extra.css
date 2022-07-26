@@ -1,13 +1,8 @@
 :root {
-    --md-primary-fg-color:        #00796b;
-    --md-primary-fg-color--light: #00796b;
-    --md-primary-fg-color--dark:  #00796b;
+    --md-primary-fg-color: #0F52BA;
+    --md-primary-fg-color--light: #0F52BA;
+    --md-primary-fg-color--dark: #0F52BA;
 }
-
-.md-typeset code {
-    line-height: 1.5;
-}
-
 
 @media screen and (min-width: 768px){
     .md-grid {
@@ -24,7 +19,9 @@
 .post__img_legend {
     text-align: center;
     font-size: 0.7rem;
-    margin-bottom: 1rem;
+    font-style: normal !important;
+    margin: 1rem auto 1.5rem !important;
+    max-width: 28rem !important;
 }
 
 .md-typeset h1 {
@@ -39,12 +36,20 @@
     margin: 1.4rem 0 -0.5rem;
 }
 
+.md-typeset {
+    line-height: 1.75;
+}
+
 .md-typeset .admonition, .md-typeset details {
-    font-size: 0.75rem;
+    font-size: 0.70rem;
 }
 
 .md-typeset .footnote {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+}
+
+.md-typeset code {
+    line-height: 1.65 !important;
 }
 
 .col-1 {width: 8.33%;}

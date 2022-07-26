@@ -1,21 +1,21 @@
 # Project Information
 #
-site_name: Programming in a Nutshell
-site_url: https://ahayasic.github.io/programming-in-a-nutshell
+site_name: Python Programming Notes
+site_url: https://ahayasic.github.io/python-programming-notes
 site_author: Alisson Hayasi da Costa
 # site_description:
 
 
 # Repository
 #
-repo_name: ahayasic/programming-in-a-nutshell
-repo_url: https://github.com/ahayasic/programming-in-a-nutshell
+repo_name: ahayasic/python-programming-notes
+repo_url: https://github.com/ahayasic/python-rogramming-notes
 edit_uri: ""
 
 
 # Copyright
 #
-copyright: Copyright &copy; 2021 Alisson Hayasi da Costa
+copyright: Copyright &copy; Alisson Hayasi da Costa
 
 
 # Configuration
@@ -62,8 +62,8 @@ theme:
 
   # Font
   font:
-    text: Nunito
-    code: Fira Mono
+    text: DM Sans
+    code: Roboto Mono
     font: false
   # favicon:
   icon:
@@ -160,7 +160,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       repo_url_shorthand: true
       user: ahayasic
-      repo: programming-in-a-nutshell
+      repo: python-programming-notes
 
   # Utils
   - toc:
@@ -187,13 +187,17 @@ nav:
   - Programação Orientada à Objetos:
     - oriented_object_programming/index.md
     - Introdução ao Design Orientado à Objetos: oriented_object_programming/introduction.md
-    - Classes e Objetos em Python: oriented_object_programming/classes_and_objects_in_python.md
+    - Classes e Objetos: oriented_object_programming/classes_and_objects_in_python.md
     - Herança, Composição & Polimorfismo: oriented_object_programming/inheritance_composition_and_polymorphism.md
-    # - Estudos de Caso:  # TODO
   - Masterizando Python:
     - mastering_python/index.md
-    - Guias Definitivos:
+    - Dicas e Truques:
       - Importações em Python: mastering_python/definitive_guides/python_imports_guide.md
+      - Typing Hints: mastering_python/typing_hints.md
+    - Testes:
+      - mastering_python/index.md
+    - Padrões de Projeto:
+      - mastering_python/index.md
   - Práticas de Desenvolvimento:
     - development_practices/index.md
     - Como documentar aplicações: development_practices/how_document_applications.md
