@@ -1,0 +1,1423 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Alisson Hayasi da Costa">
+      
+      
+        <link rel="canonical" href="https://ahayasic.github.io/python-programming-notes/mastering_python/definitive_guides/python_imports_guide/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Importações em Python - Python Programming Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"DM Sans";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-de-importacoes-em-python" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="Python Programming Notes" class="md-header__button md-logo" aria-label="Python Programming Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python Programming Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Importações em Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Trocar para Modo Escuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Trocar para Modo Escuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Trocar para Modo Claro"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Trocar para Modo Claro" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/ahayasic/python-rogramming-notes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ahayasic/python-programming-notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Início
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../about/" class="md-tabs__link">
+      Sobre o Autor
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../oriented_object_programming/" class="md-tabs__link">
+        Programação Orientada à Objetos
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Masterizando Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../development_practices/" class="md-tabs__link">
+        Práticas de Desenvolvimento
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Python Programming Notes" class="md-nav__button md-logo" aria-label="Python Programming Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python Programming Notes
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ahayasic/python-rogramming-notes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ahayasic/python-programming-notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Início
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        Sobre o Autor
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../../oriented_object_programming/">Programação Orientada à Objetos</a>
+          <label for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Programação Orientada à Objetos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Programação Orientada à Objetos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oriented_object_programming/introduction/" class="md-nav__link">
+        Introdução ao Design Orientado à Objetos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oriented_object_programming/classes_and_objects_in_python/" class="md-nav__link">
+        Classes e Objetos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oriented_object_programming/inheritance_composition_and_polymorphism/" class="md-nav__link">
+        Herança, Composição & Polimorfismo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../">Masterizando Python</a>
+          <label for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Masterizando Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Masterizando Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Dicas e Truques
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dicas e Truques" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Dicas e Truques
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Importações em Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Importações em Python
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminologia" class="md-nav__link">
+    Terminologia
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrutura-de-diretorios-de-exemplo" class="md-nav__link">
+    Estrutura de Diretórios (de Exemplo)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-import" class="md-nav__link">
+    Sobre o import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-__init__py" class="md-nav__link">
+    Sobre o __init__.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inicializacao-dos-pacotes" class="md-nav__link">
+    Inicialização dos Pacotes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sintaxe-para-importacao-de-objetos" class="md-nav__link">
+    Sintaxe para Importação de Objetos
+  </a>
+  
+    <nav class="md-nav" aria-label="Sintaxe para Importação de Objetos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacao-absoluta-vs-relativa" class="md-nav__link">
+    Importação Absoluta vs Relativa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    Exemplo
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema" class="md-nav__link">
+    Problema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucoes-workarounds" class="md-nav__link">
+    Soluções (Workarounds)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referências
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../typing_hints/" class="md-nav__link">
+        Typing Hints
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../">Testes</a>
+          <label for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Testes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Testes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../">Padrões de Projeto</a>
+          <label for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Padrões de Projeto" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Padrões de Projeto
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../../development_practices/">Práticas de Desenvolvimento</a>
+          <label for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Práticas de Desenvolvimento" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Práticas de Desenvolvimento
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development_practices/how_document_applications/" class="md-nav__link">
+        Como documentar aplicações
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development_practices/linting/" class="md-nav__link">
+        Linters para Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminologia" class="md-nav__link">
+    Terminologia
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrutura-de-diretorios-de-exemplo" class="md-nav__link">
+    Estrutura de Diretórios (de Exemplo)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-import" class="md-nav__link">
+    Sobre o import
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-__init__py" class="md-nav__link">
+    Sobre o __init__.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inicializacao-dos-pacotes" class="md-nav__link">
+    Inicialização dos Pacotes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sintaxe-para-importacao-de-objetos" class="md-nav__link">
+    Sintaxe para Importação de Objetos
+  </a>
+  
+    <nav class="md-nav" aria-label="Sintaxe para Importação de Objetos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacao-absoluta-vs-relativa" class="md-nav__link">
+    Importação Absoluta vs Relativa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo" class="md-nav__link">
+    Exemplo
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema" class="md-nav__link">
+    Problema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucoes-workarounds" class="md-nav__link">
+    Soluções (Workarounds)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referências
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="guia-de-importacoes-em-python">Guia de Importações em Python<a class="headerlink" href="#guia-de-importacoes-em-python" title="Permanent link">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Attention! Atenção!</p>
+<p><strong>(en_US)</strong> This document is a translation and adaptation of the publication <a href="https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html#example-directory-structure">"The Definitive Guide to Python import Statements"</a> by <a href="https://chrisyeh96.github.io/">Chris Yeh</a>.  I just made a few tweaks for my own use. For complete instructions, visit the original publication!</p>
+<p><strong>(pt_BR)</strong> Este documento é uma traduação e adaptação da publicação <a href="https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html#example-directory-structure">"The Definitive Guide to Python import Statements"</a> de <a href="https://chrisyeh96.github.io/">Chris Yeh</a>. Eu apenas fiz alguns ajustes para uso próprio. Para instruções completas, visite a publicação original!</p>
+</div>
+<h2 id="terminologia">Terminologia<a class="headerlink" href="#terminologia" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Módulo.</strong> Todo e qualquer arquivo <code>.py</code></li>
+<li><strong>Módulos Built-in</strong>: Módulos padrões da linguagem Python, geralmente escritos em C e traduzidos pra Python.</li>
+<li><strong>Pacote.</strong> Até o Python 3.3, qualquer diretório que contenha o arquivo <code>__init__.py</code>. A partir do Python 3.3, qualquer diretório que contenha ou não <code>__init__.py</code></li>
+<li><strong>Objeto.</strong> Tudo do Python</li>
+</ul>
+<h2 id="estrutura-de-diretorios-de-exemplo">Estrutura de Diretórios (de Exemplo)<a class="headerlink" href="#estrutura-de-diretorios-de-exemplo" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>test/                      # root folder
+<span class="linenos" data-linenos=" 2 "></span>    packA/                 # package packA
+<span class="linenos" data-linenos=" 3 "></span>        subA/              # subpackage subA
+<span class="linenos" data-linenos=" 4 "></span>            __init__.py
+<span class="linenos" data-linenos=" 5 "></span>            sa1.py
+<span class="linenos" data-linenos=" 6 "></span>            sa2.py
+<span class="linenos" data-linenos=" 7 "></span>        __init__.py
+<span class="linenos" data-linenos=" 8 "></span>        a1.py
+<span class="linenos" data-linenos=" 9 "></span>        a2.py
+<span class="linenos" data-linenos="10 "></span>    packB/                 # package packB (implicit namespace package)
+<span class="linenos" data-linenos="11 "></span>        b1.py
+<span class="linenos" data-linenos="12 "></span>        b2.py
+<span class="linenos" data-linenos="13 "></span>    math.py
+<span class="linenos" data-linenos="14 "></span>    random.py
+<span class="linenos" data-linenos="15 "></span>    other.py
+<span class="linenos" data-linenos="16 "></span>    start.py
+</code></pre></div>
+<h2 id="sobre-o-import">Sobre o <code>import</code><a class="headerlink" href="#sobre-o-import" title="Permanent link">&para;</a></h2>
+<p>Quando executamos um <code>.py</code> (e.g. <code>python foo.py</code>), o interpretador do Python busca todos os módulos ou pacotes na seguinte ordem:</p>
+<ul>
+<li>Módulos Built-in</li>
+<li>Módulos e pacotes importáveis através dos caminhos definidos em <code>sys.path</code>.</li>
+</ul>
+<p>A variável <code>sys.path</code> é uma lista de caminhos a partir do qual podemos importar pacotes ao executarmos o <code>.py</code>. Assim, a <code>sys.path</code> sempre é inicializada com os seguintes caminhos:</p>
+<ul>
+<li>Diretório corrente onde o <code>.py</code> está sendo executado.</li>
+<li>Diretórios contidos na variável de ambiente <code>PYTHONPATH</code>.</li>
+<li>Diretórios padrões do <code>sys.path</code>. Ou seja: Python Standard Library, pacotes instalados no ambiente virtual, etc.</li>
+</ul>
+<p>Logo, <strong>apenas</strong> os pacotes <strong>contidos nos caminhos</strong> de <code>sys.path</code> são <strong>importáveis</strong>.</p>
+<p>Além disso,</p>
+<ul>
+<li>Se o (interpretador) Python for invocado iterativamente, <code>sys.path[0]</code> é uma <em>string</em> vazia, indicando que os módulos e pacotes devem ser pesquisados através do diretório corrente (a partir do interpretador foi chamado).</li>
+<li>Já se o script for executado da forma <code>python foo.py</code>, então <code>sys.path[0]</code> é o caminho absoluto para o script em questão.</li>
+</ul>
+<p>Portanto, perceba que <strong>quando executamos um script Python, pouco importa qual é o caminho do seu "diretório de trabalho", o que importa é o caminho do script</strong>.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemplo</p>
+<p>Supondo que a localização do nosso <em>shell</em> estiver em <code>test/</code>, se executarmos <code>python ./packA/subA/sa1.py</code>.</p>
+<ul>
+<li><code>sys.path[0]</code> será <code>test/packA/subA/</code>, mas não <code>test/</code>.</li>
+</ul>
+</div>
+<p>Além disso, <strong><code>sys.path</code> é compartilhada entre todos os módulos importáveis!</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Exemplo</p>
+<p>Suponha que façamos <code>user@user:~/test$ python start.py</code>, onde</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># test/start.py</span>
+<span class="linenos" data-linenos="2 "></span><span class="kn">from</span> <span class="nn">packA</span> <span class="kn">import</span> <span class="n">a1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># test/packA/a1.py</span>
+<span class="linenos" data-linenos="2 "></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<p>Com isso, <code>sys.path[0]</code> será <code>test/</code> e, portanto, o módulo <code>a1.py</code> será capaz de importar todo e qualquer módulo e pacote que parte de <code>test/</code>.</p>
+</div>
+<h2 id="sobre-o-__init__py">Sobre o <code>__init__.py</code><a class="headerlink" href="#sobre-o-__init__py" title="Permanent link">&para;</a></h2>
+<p>O arquivo <code>__init__.py</code> tem dois papéis:</p>
+<ul>
+<li>Até o Python 3.3, <code>__init__.py</code> era responsável por tornar um pacote de scripts em um pacote de módulos importáveis.</li>
+<li>(Para toda e qualquer versão do Python) Responsável por executar o código de inicialização dos pacotes.</li>
+</ul>
+<p>Logo, para que os pacotes sejam considerados como módulos importáveis e inicializados apropriadamente (até o Python 3.3), devemos incluir o <code>__init__.py</code> no pacote em questão, como apresentado na <a href="#estrutura-de-diretorios-de-exemplo">estrutura de diretórios</a>.</p>
+<p>Já para versões do Python superiores à 3.3, todos os diretórios são considerados como pacotes, devido a adoção do pacotes de <em>namespaces</em> implícitos.</p>
+<h2 id="inicializacao-dos-pacotes">Inicialização dos Pacotes<a class="headerlink" href="#inicializacao-dos-pacotes" title="Permanent link">&para;</a></h2>
+<p>Sempre que um pacote (ou um dos seus módulos) for importado, o Python executa todo o código contido em <code>__init__.py</code> (presente na raíz do pacote), caso exista. Com isso, todos os objetos importáveis definidos em <code>__init__.py</code> são considerados parte do <em>namespace</em>  do pacote<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>Por exemplo, sejam:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># test/packA/a1.py</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">def</span> <span class="nf">a1_func</span><span class="p">():</span>
+<span class="linenos" data-linenos="3 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;running a1_func()&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># test/packA/__init__.py</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># this import makes a1_func directly accessible from packA.a1_func</span>
+<span class="linenos" data-linenos="4 "></span><span class="kn">from</span> <span class="nn">packA.a1</span> <span class="kn">import</span> <span class="n">a1_func</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="kn">from</span> <span class="nn">packA_func</span><span class="p">():</span>
+<span class="linenos" data-linenos="7 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;running packA_func()&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># test/start.py</span>
+<span class="linenos" data-linenos="2 "></span><span class="kn">import</span> <span class="nn">packA</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="n">packA</span><span class="o">.</span><span class="n">packA_func</span><span class="p">()</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">packA</span><span class="o">.</span><span class="n">a1_func</span><span class="p">()</span>
+<span class="linenos" data-linenos="6 "></span><span class="n">packA</span><span class="o">.</span><span class="n">a1</span><span class="o">.</span><span class="n">a1_func</span><span class="p">()</span>
+</code></pre></div>
+<p>A saída do comando <code>user@user:~/test$ python start.py</code> é:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>running packA_func<span class="o">()</span>
+<span class="linenos" data-linenos="2 "></span>running a1_func<span class="o">()</span>
+<span class="linenos" data-linenos="3 "></span>running a1_func<span class="o">()</span>
+</code></pre></div>
+<h2 id="sintaxe-para-importacao-de-objetos">Sintaxe para Importação de Objetos<a class="headerlink" href="#sintaxe-para-importacao-de-objetos" title="Permanent link">&para;</a></h2>
+<p>Como já visto anteriormente, podemos executar importações de 3 formas diferentes</p>
+<ol>
+<li>
+<p><code>import &lt;package or module&gt;</code></p>
+<div class="admonition example">
+<p class="admonition-title">Exemplo</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span> <span class="nn">numpy</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p><code>import &lt;package or module&gt; as alias</code></p>
+<div class="admonition example">
+<p class="admonition-title">Exemplo</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p><code>from &lt;package or module&gt; import &lt;inner&gt;</code></p>
+<div class="admonition example">
+<p class="admonition-title">Exemplo</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span>
+</code></pre></div>
+</div>
+</li>
+</ol>
+<p>No primeiro caso, após a importação, basta navegarmos entre os diferentes níveis do pacote através da notação de ponto. Por exemplo, <code>pkgX.subpkgX.moduleX.X</code></p>
+<p>No segundo caso, definimos um "apelido" para o pacote ou módulo importado. Assim, podemos utilizá-lo através do alias.</p>
+<p>Já no terceiro caso, importamos um subpacote, módulo ou objeto mais interno do pacote principal.</p>
+<p>Note ainda que a notação de ponto pode ser utilizada para importar diretamente os pacotes de interesse (em conjunto com <code>from</code>). Por exemplo <code>from pkgX.subpkgX.moduleX import X</code>.</p>
+<p>Por fim, lembre que apenas os objetos declarados no <code>__init__.py</code> de cada pacote (ou subpacote) são importáveis.</p>
+<h3 id="importacao-absoluta-vs-relativa">Importação Absoluta vs Relativa<a class="headerlink" href="#importacao-absoluta-vs-relativa" title="Permanent link">&para;</a></h3>
+<p><strong>Importação absoluta</strong> é aquela que usa o caminho absoluto (ou seja, a partir do diretório raiz do projeto) para o módulo que se deseja importar.</p>
+<p><strong>Importação relativa</strong> usa o caminho relativo (ou seja, a partir do módulo corrente) para o módulo que se deseja importar. Ainda, há dois tipos de <em>importação relativa</em>.</p>
+<ul>
+<li><strong>Importação relativa <em>explícita</em>.</strong> Importações no formato <code>from .&lt;module or package&gt; import X</code>, onde <code>.</code> indica o diretório corrente; <code>..</code> indica o diretório anterior, etc.</li>
+<li><strong>Importação relativa <em>implícita</em>.</strong>  Importações definidas como se o diretório atual fosse parte de <code>sys.path</code>. Contudo, note que <strong>IMPORTAÇÕES RELATIVAS IMPLÍCITAS NÃO EXISTEM NO PYTHON 3!!!</strong></li>
+</ul>
+<p>Note ainda que, na importação relativa conseguimos importar módulos apenas até o nível a partir do qual estamos executando o <code>.py</code>.</p>
+<p>Portanto, é recomendado o uso de importação absoluta na grande maioria dos casos. Afinal, a importação absoluta evita confusões e inconsistências. Além disso, scripts que usam importação relativa não podem ser executados diretamente.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Uma das grandes vantagens da linguagem Python é sua flexibilidade e durante o desenvolvimento de scripts também buscamos flexibilidade em como os módulos se relacionam entre si.</p>
+<p>Logo, seja para rodar um script diretamente ou importar um módulo dentro de outro, a flexibilidade é importante. Porém, o comportamento de importação do Python produz algumas complicações especiais:</p>
+<ul>
+<li><strong>Ao executarmos um script diretamente, é impossível importar qualquer coisa de seu diretório-pai.</strong></li>
+<li><strong>O <code>sys.path</code> é diferente para cada script, quando executados diretamente a partir da pasta em que cada um se encontra.</strong></li>
+</ul>
+<h3 id="exemplo">Exemplo<a class="headerlink" href="#exemplo" title="Permanent link">&para;</a></h3>
+<p>Vamos considerar a seguinte situação. Dada nossa <a href="#estrutura-de-diretorios-de-exemplo">esturutra de diretórios</a>, queremos:</p>
+<ul>
+<li>Executar tanto o script <code>start.py</code> quanto <code>a2.py</code> diretamente.</li>
+<li>O <code>start.py</code> importa o módulo <code>a2.py</code>.</li>
+<li>O <code>a2.py</code> importa o módulo <code>sa2.py</code>.</li>
+</ul>
+<h4 id="problema">Problema<a class="headerlink" href="#problema" title="Permanent link">&para;</a></h4>
+<p>Ao executarmos <code>user@user:~test/$ python start.py</code>, o <code>sys.path</code> terá <code>test/</code> e as declarações de importações serão:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># test/start.py</span>
+<span class="linenos" data-linenos="2 "></span><span class="kn">from</span> <span class="nn">packA</span> <span class="kn">import</span> <span class="n">a2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># test/packA/a2.py</span>
+<span class="linenos" data-linenos="2 "></span><span class="kn">from</span> <span class="nn">packA.subA</span> <span class="kn">import</span> <span class="n">sa2</span>
+</code></pre></div>
+<p>Porém, ao executarmos <code>user@user:~test/packA$ python a2.py</code>, o <code>sys.path</code> terá <code>test/packA/</code>. Logo:</p>
+<ul>
+<li>A declaração de importação <code>from packA.subA import sa2</code> não irá funcionar, pois <code>packA</code> não é um diretório contido em <code>test/packA/</code>.</li>
+<li>Se trocarmos a declaração para <code>from subA import sa2</code>, será possível executar <code>python a2.py</code>, mas impossível executar <code>python start.py</code>, pois não há <code>subA/</code> em <code>sys.path</code>.</li>
+</ul>
+<h4 id="solucoes-workarounds">Soluções (Workarounds)<a class="headerlink" href="#solucoes-workarounds" title="Permanent link">&para;</a></h4>
+<p>Consideando estes problemas, podemos recorrer às seguintes estratégias:</p>
+<ol>
+<li>
+<p>Use a importação absoluta (sempre partindo da raíz, no caso <code>test/</code>) em todos os módulos, executando módulos mais internos a partir da raíz <strong>(recomendado)</strong>.</p>
+<ul>
+<li>Com isso, você será capaz de executar o <code>start.py</code> diretamente.</li>
+<li>
+<p>Para executar o <code>a2.py</code> diretamente, execute-o como um módulo:</p>
+<ul>
+<li>Vá para a raiz do diretório de trabalho</li>
+<li>Execute <code>a2.py</code> como um módulo importado</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>python -m packA.a2
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Use a importação absoluta (sempre partindo da raíz, no caso <code>test/</code>) em todos os módulos, sendo o diretório raíz adicionado na <code>sys.path</code>.</p>
+<ul>
+<li>Com isso, você será capaz de executar o <code>start.py</code> diretamente.</li>
+<li>Para executar o <code>a2.py</code>, adicione o diretório raíz <code>test/</code> antes da importação de <code>sa2.py</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="kn">from</span> <span class="nn">packA.subA</span> <span class="kn">import</span> <span class="n">sa2</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Este método funciona no geral. Contudo, há situações em que a variável <code>__file__</code> pode estar incorreta. Neste caso, precisamos de uma solução mais robusta. Acesse essa <a href="https://stackoverflow.com/a/11158224">resposta no StackOverflow</a> para mais instruções.</p>
+</div>
+</li>
+<li>
+<p>Instale o pacote em modo de desenvolvimento no ambiente virtual. Com isso, a raíz do diretório sempre estará presente no <code>sys.path</code> como um pacote instalado <strong>(recomendado)</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Para informações sobre criação e instalação de pacotes, veja <a href="#">Criando Pacotes e Módulos</a>.</p>
+</div>
+</li>
+</ol>
+<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html#example-directory-structure">The Definitive Guide to Python import Statements</a></li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Isso significa que podemos importá-los através da sintaxe <code>pkgname.&lt;obj_to_import&gt;</code>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+                  
+                    
+
+<!-- Last updated date -->
+
+<hr />
+<div class="md-source-date">
+    <div class="row">
+        <div class="col-5">
+            <div class="custom-source-date__date">
+                <small>
+                    <!-- mkdocs-git-revision-date-localized-plugin -->
+                    
+                    Última atualização: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-07-27</span>
+
+                    
+                    <br />Criada: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-07-27</span>
+                    
+
+                    <!-- mkdocs-git-revision-date-plugin -->
+                    
+                </small>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="row">
+                <div class="custom-source-date__socials">
+                    <img class="custom-source-date__socials__img" src="https://raw.githubusercontent.com/ahayasic/ahayasic.github.io/main/assets/img/about.jpg">
+                    <div class="custom-source-date__socials__name"><small>Alisson Hayasi da Costa</small></div>
+                    <div class="custom-source-date__socials__icons">
+                        <a href="https://linkedin.com/in/ahayasic/" target="_blank">
+                            <span class="twemoji linkedin">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" /></svg>
+                            </span>
+                        </a>
+                        &middot;
+                        <a href="https://github.com/ahayasic" target="_blank">
+                            <span class="twemoji github">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                            </span>
+                        </a>
+                        &middot;
+                        <a href="https://ahayasic.github.io/" target="_blank">
+                            <span class="twemoji globe">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M1.543 7.25h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.506 6.506 0 00-4.666 5.5zm2.733 1.5H1.543a6.506 6.506 0 004.666 5.5 11.13 11.13 0 01-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948zm1.504 0h4.44a9.637 9.637 0 01-1.363 4.177c-.306.51-.612.919-.857 1.215a9.978 9.978 0 01-.857-1.215A9.637 9.637 0 015.78 8.75zm4.44-1.5H5.78a9.637 9.637 0 011.363-4.177c.306-.51.612-.919.857-1.215.245.296.55.705.857 1.215A9.638 9.638 0 0110.22 7.25zm1.504 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.506 6.506 0 004.666-5.5h-2.733zm2.733-1.5h-2.733c-.144-2.074-.866-3.756-1.58-4.948a11.738 11.738 0 00-.353-.552 6.506 6.506 0 014.666 5.5zM8 0a8 8 0 100 16A8 8 0 008 0z"></path></svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Voltar ao topo
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: None" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              None
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../typing_hints/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Typing Hints" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Typing Hints
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; Alisson Hayasi da Costa
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/ahayasic/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/ahayasic" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://ahayasic.github.io/" target="_blank" rel="noopener" title="ahayasic.github.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.tabs", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
